@@ -57,8 +57,7 @@ const Index = () => {
                     <p>
                     I am a skilled Software Developer specializing in React.js, Redux,
                      and modern front-end technologies. I build scalable,
-                      user-friendly web applications with a focus on performance, security
-                      , and seamless user experiences. Experienced in API integrations, state management,
+                      user-friendly web applications with a focus on performance, security, and seamless user experiences. Experienced in API integrations, state management,
                        and payment gateways, I am passionate about solving complex problems and delivering
                         high-quality digital solutions.
                     </p>
