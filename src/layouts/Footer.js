@@ -16,9 +16,9 @@ const Footer = () => {
     <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/khushi-arora-b317b024a/">
       <i aria-hidden="true" className="fab fa-linkedin" />
     </a>
-    <a target="_blank" rel="nofollow" href="#">
+    {/* <a target="_blank" rel="nofollow" href="#">
                         <i aria-hidden="true" className="fab fa-twitter" />
-                      </a>
+                      </a> */}
                 {/* <a target="_blank" rel="nofollow" href="http://twitter.com">
                   <i aria-hidden="true" className="fab fa-twitter" />
                 </a>

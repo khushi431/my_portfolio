@@ -5,6 +5,8 @@ import Resume from "../src/components/Resume";
 import Layout from "../src/layouts/Layout";
 import PortfolioImage from '../public/assets/images/portfolio-image-new.png'
 import Image from "next/image";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   servicesSliderProps,
   testimonialsSliderProps,
@@ -15,7 +17,38 @@ const PortfolioIsotope = dynamic(
     ssr: false,
   }
 );
+
 const Index = () => {
+  const formRef = useRef();
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setSuccess(false);
+    setError("");
+    setLoading(true);
+    emailjs
+      .sendForm(
+        "service_e8m3lb3",    // replace with your EmailJS service ID
+        "template_fga1hm9",   // replace with your EmailJS template ID
+        formRef.current,
+        "JBhCotjtYiGDUfZUI"        // replace with your EmailJS public key
+      )
+      .then(
+        (result) => {
+          setSuccess(true);
+          formRef.current.reset();
+          setLoading(false);
+        },
+        (error) => {
+          setError("Failed to send message. Please try again.");
+          setLoading(false);
+        }
+      );
+  };
+
   return (
     <Layout pageClassName={"home"}>
       {/* Section - Hero Started */}
@@ -1315,13 +1348,13 @@ const Index = () => {
                     }}
                   />
                   <div className="contacts-form">
-                    <form onSubmit={(e) => e.preventDefault()} id="cform">
+                    <form ref={formRef} onSubmit={sendEmail} id="cform">
                       <div className="row">
                         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                           <div className="group">
                             <label>
                               Your Full Name <b>*</b>
-                              <input type="text" name="name" />
+                              <input type="text" name="name" required />
                             </label>
                           </div>
                         </div>
@@ -1329,7 +1362,7 @@ const Index = () => {
                           <div className="group">
                             <label>
                               Your Email Address <b>*</b>
-                              <input type="email" name="email" />
+                              <input type="email" name="email" required />
                             </label>
                           </div>
                         </div>
@@ -1337,7 +1370,7 @@ const Index = () => {
                           <div className="group">
                             <label>
                               Your Subject <b>*</b>
-                              <input type="text" name="subject" />
+                              <input type="text" name="subject" required />
                             </label>
                           </div>
                         </div>
@@ -1345,7 +1378,7 @@ const Index = () => {
                           <div className="group">
                             <label>
                               Your Message <b>*</b>
-                              <textarea name="message" defaultValue={""} />
+                              <textarea name="message" required />
                             </label>
                           </div>
                         </div>
@@ -1353,19 +1386,43 @@ const Index = () => {
                           <div className="terms-label">
                             * Accept the terms and conditions.
                           </div>
-                          <a
-                            href="#"
-                            className="btn"
-                            onclick="$('#cform').submit(); return false;"
-                          >
-                            <span>Send Message</span>
-                          </a>
+                          <button type="submit" className="btn" disabled={loading}>
+                            {loading ? (
+                              <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <span className="loader" style={{
+                                  border: '2px solid #f3f3f3',
+                                  borderTop: '2px solid #555',
+                                  borderRadius: '50%',
+                                  width: 16,
+                                  height: 16,
+                                  animation: 'spin 1s linear infinite',
+                                  display: 'inline-block',
+                                }} />
+                                Sending...
+                              </span>
+                            ) : (
+                              <span>Send Message</span>
+                            )}
+                          </button>
                         </div>
                       </div>
                     </form>
-                    <div className="alert-success" style={{ display: "none" }}>
-                      <p>Thanks, your message is sent successfully.</p>
-                    </div>
+                    {success && (
+                      <div className="alert-success">
+                        <p>Thanks, your message is sent successfully.</p>
+                      </div>
+                    )}
+                    {error && (
+                      <div className="alert-error">
+                        <p>{error}</p>
+                      </div>
+                    )}
+                    <style jsx>{`
+                      @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                      }
+                    `}</style>
                   </div>
                 </div>
               </div>

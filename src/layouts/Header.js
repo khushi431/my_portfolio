@@ -146,7 +146,7 @@ const Header = () => {
                                 Resume
                               </a>
                             </li>
-                            <li className="menu-item">
+                            {/* <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
@@ -155,8 +155,8 @@ const Header = () => {
                               >
                                 Testimonials
                               </a>
-                            </li>
-                            <li className="menu-item">
+                            </li> */}
+                            {/* <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
@@ -165,8 +165,8 @@ const Header = () => {
                               >
                                 Pricing
                               </a>
-                            </li>
-                            <li className="menu-item">
+                            </li> */}
+                            {/* <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
@@ -175,7 +175,7 @@ const Header = () => {
                               >
                                 Blog
                               </a>
-                            </li>
+                            </li> */}
                             <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
@@ -186,7 +186,7 @@ const Header = () => {
                                 Contact
                               </a>
                             </li>
-                            <li
+                            {/* <li
                               className={`menu-item menu-item-has-children has-children ${
                                 pageToggle ? "opened" : "closed"
                               }`}
@@ -258,7 +258,7 @@ const Header = () => {
                                   </Link>
                                 </li>
                               </ul>
-                            </li>
+                            </li> */}
                           </ul>
                         </div>
                         {/* social */}
@@ -271,10 +271,10 @@ const Header = () => {
                             title="Linkedin" href="https://www.linkedin.com/in/khushi-arora-b317b024a/">
       <i  className="fab fa-linkedin" />
     </a>
-    <a target="_blank" rel="nofollow"  className="scrolla-element-anim-1"
+    {/* <a target="_blank" rel="nofollow"  className="scrolla-element-anim-1"
                             title="Twitter" href="#">
                         <i className="fab fa-twitter" />
-                      </a>
+                      </a> */}
                           {/* <a
                             href="http://dribbble.com"
                             target="blank"
